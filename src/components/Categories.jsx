@@ -13,7 +13,7 @@ const Categories = (props) => {
         return(
             <>
 
-              <Category key={id} singleCategory={singleCategory}/>
+              <Category key={id} singleCategory={singleCategory} currentQuestion={props.currentQuestion}/>
             </>
 
         )

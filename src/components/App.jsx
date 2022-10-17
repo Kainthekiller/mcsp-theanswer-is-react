@@ -25,7 +25,7 @@ const App = () => {
 
 
       {/* Gameboard */}
-      <Gameboard   currentQuestion={categories}/>
+      <Gameboard   categories={categories}  currentQuestion={currentQuestion}/>
       {/*  pass another parm,  */}
       {/* Scoreboard */}
       <Scoreboard score={score}/>
