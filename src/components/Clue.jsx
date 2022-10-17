@@ -16,6 +16,7 @@ const Clue = (props) => {
     {
         props.setCurrentQuestion(cluClicked)
         console.log(cluClicked)
+
     }
 
 

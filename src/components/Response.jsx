@@ -9,6 +9,18 @@ const Response = (props) => {
 
   const submitResponse = (event) => {
       event.preventDefault()
+      if (props.currentQuestion.answer === props.answeredQuestions)
+      {
+          console.log("Correct")
+          props.setScore(props.score + props.currentQuestion.value)
+          props.currentQuestion.question=null;
+          props.currentQuestion.value=null;
+
+      } else{
+          props.setScore(props.score - props.currentQuestion.value)
+          props.currentQuestion.question=null;
+          props.currentQuestion.value=null;
+      }
     // this function should fire when the user fills the response and hits 'enter'
     // Is the user response correct?
     // yes/no? What should happen?
@@ -21,6 +33,8 @@ const Response = (props) => {
           <input
             type="text"
             placeholder="Answers go here!"
+            value={props.answeredQuestions}
+            onChange={(e) => {props.setAnsweredQuestions(e.target.value)}}
             // handle data change
             // handle when 'enter' is hit
           />
