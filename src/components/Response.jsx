@@ -17,7 +17,7 @@ const Response = (props) => {
 
   return (
     <div id="response" data-testid="response">
-        <form onSubmit={(event)=>{submitResponse(event);}}>
+        <form onSubmit={(event)=>{submitResponse(event)}}>
           <input
             type="text"
             placeholder="Answers go here!"
