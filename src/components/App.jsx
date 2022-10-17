@@ -26,6 +26,7 @@ const App = () => {
 
       {/* Gameboard */}
       <Gameboard   currentQuestion={categories}/>
+      {/*  pass another parm,  */}
       {/* Scoreboard */}
       <Scoreboard score={score}/>
       {/* Response */}

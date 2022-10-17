@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Clue = (props) => {
   // show $ value of clue OR
   // the Clue question itself OR
@@ -9,11 +10,11 @@ const Clue = (props) => {
 
   return(
       <>
-      <div className="clueValue" data-testid="value">{props.Clue[0].value}</div>
-      <div className="clueValue" data-testid="value">{props.Clue[1].value}</div>
-        <div className="clueValue" data-testid="value">{props.Clue[2].value}</div>
-        <div className="clueValue" data-testid="value">{props.Clue[3].value}</div>
-        <div className="clueValue" data-testid="value">{props.Clue[4].value}</div>
+      <div className="clueValue" onClick={() => console.log(props.Clue[0].question)} data-testid="value">{props.Clue[0].value}</div>
+      <div className="clueValue" onClick={() => console.log(props.Clue[1].question)} data-testid="value">{props.Clue[1].value}</div>
+        <div className="clueValue" onClick={() => console.log(props.Clue[2].question)} data-testid="value">{props.Clue[2].value}</div>
+        <div className="clueValue" onClick={() => console.log(props.Clue[3].question)} data-testid="value">{props.Clue[3].value}</div>
+        <div className="clueValue" onClick={() => console.log(props.Clue[4].question)} data-testid="value">{props.Clue[4].value}</div>
       </>
 )
 };

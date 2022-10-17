@@ -7,6 +7,7 @@ const Gameboard = (props) => {
       data-testid="gameboard"
       id={props.currentQuestion.question ? "question" : "gameboard"}
     >
+
       <Categories id={"gameboard"}  allCategories={props.currentQuestion} />
 
     </div>
@@ -17,6 +18,6 @@ const Gameboard = (props) => {
 
 export default Gameboard;
 
-// /*/*was a question clicked?  */*/}
-// {/*/*Yes? Show clue */*/}
-//   {/*/*No? Show Categories */*/}
+// /*/*was a question clicked?  */*/}  //yesx
+// {/*/*Yes? Show clue */*/} // Show clue (Question)
+//   {/*/*No? Show Categories */*/} else show cart

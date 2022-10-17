@@ -11,9 +11,10 @@ const Categories = (props) => {
       {props.allCategories.map(function (singleCategory){
         const {id} = singleCategory;
         return(
+            <>
 
-               <Category key={id} singleCategory={singleCategory}/>
-
+              <Category key={id} singleCategory={singleCategory}/>
+            </>
 
         )
       })}
