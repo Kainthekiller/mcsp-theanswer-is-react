@@ -23,15 +23,15 @@ const Clue = (props) => {
   return(
       <>
           <div className="clueValue" onClick={() => handleClick(props.Clue[0])}
-               data-testid="value">{props.Clue[0].value}</div>
+               data-testid="value">{200}</div>
           <div className="clueValue" onClick={() => handleClick(props.Clue[1])}
-               data-testid="value">{props.Clue[1].value}</div>
+               data-testid="value">{400}</div>
           <div className="clueValue" onClick={() => handleClick(props.Clue[2])}
-               data-testid="value">{props.Clue[2].value}</div>
+               data-testid="value">{600}</div>
           <div className="clueValue" onClick={() => handleClick(props.Clue[3])}
-               data-testid="value">{props.Clue[3].value}</div>
+               data-testid="value">{800}</div>
           <div className="clueValue" onClick={() => handleClick(props.Clue[4])}
-               data-testid="value">{props.Clue[4].value}</div>
+               data-testid="value">{1000}</div>
       </>
 )
 };

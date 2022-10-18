@@ -14,81 +14,89 @@ import Category from "./Category.jsx";
 
 const App = () => {
     let smallArray = [10];
-    let finalArray = [30];
+
     let count = 0;
     //Use State ----------------
-  const [categories, setCategories] = useState(data.categories);
-  const [currentQuestion, setCurrentQuestion] = useState({});
-  const [answeredQuestions, setAnsweredQuestions] = useState([]);
-  const [score, setScore] = useState(0);
-  const [clueHolder, setClueHolder] = useState([])
-
-  //Custom Methods --------------------
-function getAllClues() {
-    for (let i = 4; i < 9; i++) {
+    const [categories, setCategories] = useState(data.categories);
+    const [currentQuestion, setCurrentQuestion] = useState({});
+    const [answeredQuestions, setAnsweredQuestions] = useState([]);
+    const [score, setScore] = useState(0);
+    const [clueHolder, setClueHolder] = useState([])
 
 
-        fetch(`http://jservice.io/api/category/?id=${i}`)
-            .then(responseNonJSON => {
-                return responseNonJSON.json();
-            })
-            .then((responseIsJSON) => {
+    //Custom Methods --------------------
+    function getAllClues() {
+        let promiseArray=[];  //HOLDS ALL THE PROMISES OBJECTS
+        for (let i = 4; i < 9; i++) {
+   //Five Calls
+                //Fetch = Object of Promises AKA new Promises()
+            promiseArray.push(fetch(`http://jservice.io/api/category/?id=${i}`)
+                .then(responseNonJSON => {
+                    return responseNonJSON.json();
+                })
+                .then((responseIsJSON) => {
+                    let finalArray = {title: "",id:0, clues:[] } // It's an Object
+                    //DONT SAVE TO ARRAY AT ALL EVER EVER !!!!
+
+                    let myBigArray = responseIsJSON;
 
 
-                let myBigArray = responseIsJSON;
                     for (let k = 0; k < 6; k++) {
                         if (k === 0)
                         {
                             smallArray[k] = myBigArray.title
-                            finalArray[count] = smallArray[k];
+                            finalArray.id = myBigArray.id;
+                            finalArray.title = smallArray[k];
                         }
-                        else
-                        {
+
+                        else {
                             smallArray[k] = myBigArray.clues[k]
-                            finalArray[count] = smallArray[k];
+                            finalArray.clues[k] = smallArray[k];
                         }
 
                         count++
                     }
 
 
-                // }
-
-
-              //  console.log(myBigArray)
-                //console.log(smallArray)
+                   return finalArray;
+                    // console.log(categories)
 
 
 
-                console.log(finalArray)
-            })
+                }))
 
+
+
+        }
+        //OUTSIDE OF THE BIG FOR LOOP :D
+         Promise.all(promiseArray).then(arrayResult=>setCategories(arrayResult))
 
     }
 
-    }
+        useEffect(() => {
+            getAllClues();
+        }, [])
 
-    useEffect( () => {
-        getAllClues();
-
-    }, [])
-
-  //Main Start ---------------------------
-  return (
-    <div id={"app"}>
+        //Main Start ---------------------------
+        return (
+            <div id={"app"}>
 
 
-      {/* Gameboard */}
-      <Gameboard   categories={categories}  setCurrentQuestion={setCurrentQuestion} currentQuestion={currentQuestion}/>
-      {/*  pass another parm,  */}
-      {/* Scoreboard */}
-      <Scoreboard score={score}/>
+                {/* Gameboard */}
+                <Gameboard categories={categories} setCurrentQuestion={setCurrentQuestion}
+                           currentQuestion={currentQuestion}/>
+                {/*  pass another parm,  */}
+                {/* Scoreboard */}
+                <Scoreboard score={score}/>
 
-      {/* Response */}
-        <Response setAnsweredQuestions={setAnsweredQuestions} answeredQuestions={answeredQuestions}  currentQuestion={currentQuestion} setScore={setScore} score={score}/>
-    </div>
+                {/* Response */}
+                <Response setAnsweredQuestions={setAnsweredQuestions} answeredQuestions={answeredQuestions}
+                          currentQuestion={currentQuestion} setScore={setScore} score={score}/>
+            </div>
 
-  );
-};
+        )
+
+}
+
 
 export default App;
