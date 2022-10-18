@@ -3,6 +3,7 @@ import data from "../testdata.js";
 import Gameboard from "./Gameboard.jsx";
 import Scoreboard from "./Scoreboard.jsx";
 import Response from "./Response.jsx";
+import Category from "./Category.jsx";
 
 
 // TODO Displays GAMEBOARD (use testdata.js)
@@ -12,9 +13,10 @@ import Response from "./Response.jsx";
 
 
 const App = () => {
-
-
-  //Use State ----------------
+    let smallArray = [10];
+    let finalArray = [30];
+    let count = 0;
+    //Use State ----------------
   const [categories, setCategories] = useState(data.categories);
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -23,20 +25,49 @@ const App = () => {
 
   //Custom Methods --------------------
 function getAllClues() {
-        fetch("http://jservice.io/api/clues")
+    for (let i = 4; i < 9; i++) {
+
+
+        fetch(`http://jservice.io/api/category/?id=${i}`)
             .then(responseNonJSON => {
                 return responseNonJSON.json();
             })
-            .then((responseIsJSON)=> {
-                console.log(responseIsJSON);
-                setClueHolder(responseIsJSON)
+            .then((responseIsJSON) => {
 
 
                 let myBigArray = responseIsJSON;
-                console.log(myBigArray[2].question)
+                    for (let k = 0; k < 6; k++) {
+                        if (k === 0)
+                        {
+                            smallArray[k] = myBigArray.title
+                            finalArray[count] = smallArray[k];
+                        }
+                        else
+                        {
+                            smallArray[k] = myBigArray.clues[k]
+                            finalArray[count] = smallArray[k];
+                        }
 
+                        count++
+                    }
+
+
+                // }
+
+
+              //  console.log(myBigArray)
+                //console.log(smallArray)
+
+
+
+                console.log(finalArray)
             })
+
+
     }
+
+    }
+
     useEffect( () => {
         getAllClues();
 

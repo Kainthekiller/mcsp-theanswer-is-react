@@ -21,11 +21,17 @@ const Clue = (props) => {
 
 
   return(
-      <><div className="clueValue" onClick={() => handleClick(props.Clue[0])} data-testid="value">{props.Clue[0].value}</div>
-      <div className="clueValue" onClick={() => handleClick(props.Clue[1])} data-testid="value">{props.Clue[1].value}</div>
-        <div className="clueValue" onClick={() => handleClick(props.Clue[2])} data-testid="value">{props.Clue[2].value}</div>
-        <div className="clueValue" onClick={() => handleClick(props.Clue[3])} data-testid="value">{props.Clue[3].value}</div>
-        <div className="clueValue" onClick={() => handleClick(props.Clue[4])} data-testid="value">{props.Clue[4].value}</div>
+      <>
+          <div className="clueValue" onClick={() => handleClick(props.Clue[0])}
+               data-testid="value">{props.Clue[0].value}</div>
+          <div className="clueValue" onClick={() => handleClick(props.Clue[1])}
+               data-testid="value">{props.Clue[1].value}</div>
+          <div className="clueValue" onClick={() => handleClick(props.Clue[2])}
+               data-testid="value">{props.Clue[2].value}</div>
+          <div className="clueValue" onClick={() => handleClick(props.Clue[3])}
+               data-testid="value">{props.Clue[3].value}</div>
+          <div className="clueValue" onClick={() => handleClick(props.Clue[4])}
+               data-testid="value">{props.Clue[4].value}</div>
       </>
 )
 };

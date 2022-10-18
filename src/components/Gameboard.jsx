@@ -7,13 +7,20 @@ const Gameboard = (props) => {
 
   //Custom Method
 if(!props.currentQuestion.question){
+
+
   return (
   <div  data-testid="gameboard"
         id={props.categories.question ? "question" : "gameboard"}>
     <Categories  allCategories={props.categories} setCurrentQuestion={props.setCurrentQuestion} />
   </div>
   )
+
+
+
 } else{
+
+
   return (
     <div  data-testid="gameboard"
           id={props.categories.question ? "question" : "gameboard"}>
